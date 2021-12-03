@@ -11,11 +11,11 @@ list_ibas_protocols <- function(Province=NULL){
   if(!file.exists(f)) stop("Could not fine IBA Protocol Metadata!")
   IBAProtocol <- readRDS(f)
   if(missing(Province)){
-    return(IBAProtocol)
+    print.data.frame(IBAProtocol,row.names = F)
   } else {
     IBAProtocolProvince <- IBAProtocol[which(IBAProtocol$Province %in% Province),]
     if(nrow(IBAProtocolProvince)==0){stop("Sorry there is no IBA Protocol Data for this province.")}
-    return(IBAProtocolProvince)
+    print.data.frame(IBAProtocolProvince,row.names = F)
   }
   
 }
