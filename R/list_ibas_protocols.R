@@ -8,7 +8,7 @@
 #' @examples list_ibas_protocols(Procince=c("BC","ON"))
 list_ibas_protocols <- function(Province=NULL){
   f <- system.file("data", paste0("IBAProtocol", ".rds"), package = "LandscapeR")
-  if(!file.exists(f)) stop("Could not fine IBA Protocol Metadata!")
+  if(!file.exists(f)) stop("Could not find IBA Protocol Metadata!")
   IBAProtocol <- readRDS(f)
   if(missing(Province)){
     print.data.frame(IBAProtocol,row.names = F)
