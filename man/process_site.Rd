@@ -4,7 +4,13 @@
 \alias{process_site}
 \title{KBA Bird Threshold Tests on Single Polygon}
 \usage{
-process_site(site = NULL, location = NULL, thresholds = NULL, file.name = NULL)
+process_site(
+  site = NULL,
+  location = NULL,
+  thresholds = NULL,
+  file.name = NULL,
+  username = NULL
+)
 }
 \arguments{
 \item{site}{a simple features shape for a single site or polygon. Comes frome read_sf.}
@@ -14,6 +20,8 @@ process_site(site = NULL, location = NULL, thresholds = NULL, file.name = NULL)
 \item{thresholds}{data.frame of new or current thresholds. If missing will use defualt values.}
 
 \item{file.name}{String of file name and path to save your excel file. Must be in .xlsx format.}
+
+\item{username}{String username for your NatureCounts account.}
 }
 \value{
 A excel spreadshead with thresholds met for a given polyon. Returns nothing if no thresholds found.

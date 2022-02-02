@@ -5,12 +5,13 @@
 #' @param location A string location for the site. This is needed for geographically confinded populations or subspecies. Can either be the provincial code e.g. 'BC' or a single IBA code e.g. 'BC017.' If ignored these tresholds will be ignored.
 #' @param thresholds data.frame of new or current thresholds. If missing will use defualt values. 
 #' @param file.name String of file name and path to save your excel file. Must be in .xlsx format.
+#' @param username String username for your NatureCounts account.
 #' @return A excel spreadshead with thresholds met for a given polyon. Returns nothing if no thresholds found.
 #' @keywords KBA Bird Thresholds, download, NatureCounts, polygon
 #' @export
 #' @examples process_site(BCSite,location = "BC",thresholds = thresholdsfile, file.name = "BCSiteKBA.xlsx" ))
 
-process_site <- function(site=NULL,location=NULL,thresholds=NULL,file.name=NULL){
+process_site <- function(site=NULL,location=NULL,thresholds=NULL,file.name=NULL, username=NULL){
   if(missing(site)) stop("Site is missing!")
   if(missing(thresholds)){ 
     file <- system.file("data", paste0("thresholds", ".rds"), package = "LandscapeR")
@@ -22,14 +23,14 @@ process_site <- function(site=NULL,location=NULL,thresholds=NULL,file.name=NULL)
   }
   if(missing(file.name)) stop("Missing file path. Must be in .xlsx format!")
   if(!grepl("\\.xlsx$", file.name)) stop("file.name Must be in .xlsx format!")
-  
+  if (missing(username)) stop("Please provide a username for NatureCounts to download your data!")
   ### Create bounding box ###
   site <-  sf::st_transform(site,crs = 4326) ### Transform First
   bbox <- sf::st_bbox(site)
   
   ### Get data and process ###
   data <- naturecounts::nc_data_dl(region = list(bbox = bbox),fields_set = "core",
-                                   username = "devans",info = "KBA Assessment",warn = FALSE, timeout = 320)
+                                   username = username, info = "KBA Assessment",warn = FALSE, timeout = 320)
   data <- subset(data, select=c("species_id","ObservationCount","CommonName","ScientificName","latitude","longitude","survey_year","survey_month","survey_day","CollectionCode"))
   data$ObservationCount <- as.numeric(data$ObservationCount)
   data <- data[!is.na(data$ObservationCount),]
