@@ -9,22 +9,25 @@ process_site(
   location = NULL,
   thresholds = NULL,
   file.name = NULL,
-  username = NULL
+  username = NULL,
+  timeout = 320
 )
 }
 \arguments{
-\item{site}{a simple features shape for a single site or polygon. Comes frome read_sf.}
+\item{site}{a simple features shape for a single site or polygon. Comes from read_sf.}
 
-\item{location}{A string location for the site. This is needed for geographically confinded populations or subspecies. Can either be the provincial code e.g. 'BC' or a single IBA code e.g. 'BC017.' If ignored these tresholds will be ignored.}
+\item{location}{A string location for the site. This is needed for geographically confined populations or subspecies. Can either be the provincial code e.g. 'BC' or a single IBA code e.g. 'BC017.' If ignored these thresholds will be ignored.}
 
-\item{thresholds}{data.frame of new or current thresholds. If missing will use defualt values.}
+\item{thresholds}{data.frame of new or current thresholds. If missing will use default values.}
 
 \item{file.name}{String of file name and path to save your excel file. Must be in .xlsx format.}
 
 \item{username}{String username for your NatureCounts account.}
+
+\item{timeout}{integer value for the number of seconds to wait for naturecounts query. Default is 320 seconds so only increase in case of failure.}
 }
 \value{
-A excel spreadshead with thresholds met for a given polyon. Returns nothing if no thresholds found.
+A excel spreadsheet with thresholds met for a given polygon. Returns nothing if no thresholds found.
 }
 \description{
 This function provides a method for querying NatureCounts data for a given polygon and testing against KBA Thresholds.
