@@ -15,9 +15,8 @@
 process_site <- function(site=NULL,location=NULL,thresholds=NULL,file.name=NULL, username=NULL, timeout=320){
   if(missing(site)) stop("Site is missing!")
   if(missing(thresholds)){
-    file <- system.file("data", paste0("thresholds", ".rds"), package = "LandscapeR")
-    if(!file.exists(file)) stop("Could not find Thresholds data!")
-    thresholds <- readRDS(file)
+    thresholds <- as.data.frame(jsonlite::fromJSON("https://kba-maps.deanrobertevans.ca/api/thresholdstests"))
+    colnames(thresholds) <- c('SpeciesID','BCSpeciesID','CommonName_EN','ScientificName','Population','Location','Criteria','ThresholdValue','Threshold','ReproductiveUnits','ThresholdType')
   }
   if(!all(names(thresholds) %in% c('SpeciesID','BCSpeciesID','CommonName_EN','ScientificName','Population','Location','Criteria','ThresholdValue','Threshold','ReproductiveUnits','ThresholdType'))){
     stop("Format of the thresholds table is incorrect. Must contain these columns: SpeciesID, BCSpeciesID, CommonName_EN, ScientificName, Population, Location, Criteria, ThresholdValue, Threshold, ReproductiveUnits, & ThresholdType.")
