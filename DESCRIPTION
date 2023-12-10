@@ -1,6 +1,6 @@
 Package: LandscapeR
 Title: LandscapeR: Tools for Landscape Team
-Version: 0.0.1.9000
+Version: 0.0.2.0000
 Authors@R: 
     person("Dean", "Evans", , "devabs@birdscanada.org", role = c("aut", "cre"))
 Description: Tools for Birds Canada Landscape team for KBAs.
@@ -10,7 +10,15 @@ Imports:
     sf,
     openxlsx,
     naturecounts,
-    tidyverse
+    tidyverse,
+    jsonlite,
+    xlsx,
+    magrittr,
+    geojsonsf,
+    googlesheets4,
+    officer,
+    officedown,
+    flextable
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
