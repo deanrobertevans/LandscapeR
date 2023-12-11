@@ -28,7 +28,7 @@ fill_forms <- function(file.path = NULL, rename=""){
   descriptions <- descriptions %>% dplyr::mutate(SiteCode=convertNL(SiteCode))
   files <-  list.files(file.path, pattern = ".xlsm", all.files = FALSE, recursive = TRUE, full.names = TRUE)
   if(rename!=""){
-    files <- files %>% str_subset(.,rename,negate = T)
+    files <- files %>% stringr::str_subset(.,rename,negate = T)
   }
   if(is.null(files)) stop("Error: no .xlsm files provided in filepath. Set your filepath or working directory to a folder with .xlsm file(s).")
 
