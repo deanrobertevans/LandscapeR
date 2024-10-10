@@ -83,6 +83,45 @@ fill_forms <- function(file.path = NULL, rename=""){
     }
     if(is.na(siteonly$ConservationF)){message(paste0("Warning: no value in French conservation for this site ", site, "."))}
 
+    if(!is.na(siteonly$additionalbiodiversity)){
+      xlsx::setCellValue(sitecells$`36.3`, specialCharacters(siteonly$additionalbiodiversity))
+    }
+    if(is.na(siteonly$additionalbiodiversity)){message(paste0("Warning: no value in english additional biodiversity for this site ", site, "."))}
+
+    if(!is.na(siteonly$additionalbiodiversity_fr)){
+      xlsx::setCellValue(sitecells$`36.4`, specialCharacters(siteonly$additionalbiodiversity_fr))
+    }
+    if(is.na(siteonly$additionalbiodiversity)){message(paste0("Warning: no value in french additional biodiversity for this site ", site, "."))}
+
+    if(!is.na(siteonly$customaryjurisdiction)){
+      xlsx::setCellValue(sitecells$`37.3`, specialCharacters(siteonly$customaryjurisdiction))
+    }
+    if(is.na(siteonly$customaryjurisdiction)){message(paste0("Warning: no value in english customary jurisdiction for this site ", site, "."))}
+
+    if(!is.na(siteonly$customaryjurisdiction_fr)){
+      xlsx::setCellValue(sitecells$`37.4`, specialCharacters(siteonly$customaryjurisdiction_fr))
+    }
+    if(is.na(siteonly$customaryjurisdiction_fr)){message(paste0("Warning: no value in french customary jurisdiction for this site ", site, "."))}
+
+    if(!is.na(siteonly$customaryjurisdictionsource)){
+      xlsx::setCellValue(sitecells$`38.3`, specialCharacters(siteonly$customaryjurisdictionsource))
+    }
+    if(is.na(siteonly$customaryjurisdictionsource)){message(paste0("Warning: no value in english customary jurisdiction source for this site ", site, "."))}
+
+    if(!is.na(siteonly$customaryjurisdictionsource_fr)){
+      xlsx::setCellValue(sitecells$`38.4`, specialCharacters(siteonly$customaryjurisdiction_fr))
+    }
+    if(is.na(siteonly$customaryjurisdictionsource_fr)){message(paste0("Warning: no value in french customary jurisdiction source for this site ", site, "."))}
+
+    if(!is.na(siteonly$sitehistory)){
+      xlsx::setCellValue(sitecells$`40.3`, specialCharacters(siteonly$sitehistory))
+    }
+    if(is.na(siteonly$sitehistory)){message(paste0("Warning: no value in site history for this site ", site, "."))}
+
+    if(!is.na(siteonly$sitehistory_fr)){
+      xlsx::setCellValue(sitecells$`40.4`, specialCharacters(siteonly$sitehistory_fr))
+    }
+    if(is.na(siteonly$sitehistory_fr)){message(paste0("Warning: no value in french site history for this site ", site, "."))}
     #save workbook
     #can change this into an overwrite of the original file by giving it the same name
 
