@@ -237,6 +237,7 @@ specialCharacters <- function(x){
   # '
   x <- gsub("&rsquo;", "'", x)
   x <- gsub("&apos;", "'", x)
+  x <- gsub("&#39;", "'", x)
 
   # -
   x <- gsub("&ndash;", "-", x)
