@@ -109,7 +109,7 @@ fill_forms <- function(file.path = NULL, rename=""){
     if(is.na(siteonly$customaryjurisdictionsource)){message(paste0("Warning: no value in english customary jurisdiction source for this site ", site, "."))}
 
     if(!is.na(siteonly$customaryjurisdictionsource_fr)){
-      xlsx::setCellValue(sitecells$`38.4`, specialCharacters(siteonly$customaryjurisdiction_fr))
+      xlsx::setCellValue(sitecells$`38.4`, specialCharacters(siteonly$customaryjurisdictionsource_fr))
     }
     if(is.na(siteonly$customaryjurisdictionsource_fr)){message(paste0("Warning: no value in french customary jurisdiction source for this site ", site, "."))}
 
